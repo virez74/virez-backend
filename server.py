@@ -19,8 +19,8 @@ def extract_text(file_path):
     return ""
 
 def analyze_with_deepseek(cv_text, jd_text):
-    api_url = "https://api.deepseek.com/v1/chat/completions"  # Replace with actual Deepseek API URL
-    api_key = "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"  # Replace with your actual Deepseek API Key
+    api_url = "https://openrouter.ai/api/v1"  # Replace with actual Deepseek API URL
+    api_key = "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"  # Replace with your actual Deepseek API Key
     
     prompt = f"""Analyze the provided candidate CV and client job description with a focus on accuracy. 
     Generate a structured comparison table that evaluates the candidate's fitness for the job based on key factors: 
@@ -39,7 +39,7 @@ def analyze_with_deepseek(cv_text, jd_text):
     
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
     payload = {
-        "model": "deepseek-chat",  # Ensure this is the correct model name
+        "model": "deepseek/deepseek-r1:free",  # Ensure this is the correct model name
         "messages": [{"role": "system", "content": "You are an AI specializing in resume and job description analysis."},
                      {"role": "user", "content": prompt}]
     }
