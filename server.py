@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pdfplumber
 import docx
 import os
@@ -6,6 +7,7 @@ import requests
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+CORS(app, origins=["https://virezcv.netlify.app"])
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
